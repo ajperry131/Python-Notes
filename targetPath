@@ -1,0 +1,13 @@
+from pathlib import Path
+from time import ctime
+import shutil
+
+path = Path("test.py")
+
+files = [p for p in path.rglob("*.py")]
+
+for file in files:
+    print("{:<25}  {:>30} ".format(file.name, ctime(file.stat().st_ctime)))
+
+target = Path("targetPath")
+shutil.copy(path, target)
